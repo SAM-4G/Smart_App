@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="logo_splash">Logo Splash</string>
+    <string name="water_level_detection_for_coffee_beans">Water Level Detection for Coffee Beans</string>
+    <string name="user_icon">User Icon</string>
+    <string name="register">REGISTER</string>
+    <string name="login">LOGIN</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="logo_login">Logo Login</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="detection">DETECTION</string>
+    <string name="percentage">0</string>
+    <string name="water_level">WATER LEVEL (%)</string>
+    <string name="weight_value">0</string>
+    <string name="weight">WEIGHT (KG)</string>
+    <string name="indicator">INDICATOR</string>
+    <string name="high_level">High Level</string>
+    <string name="high_level_value">Kopi dengan kadar air di atas 55%.</string>
+    <string name="medium_level">Medium Level</string>
+    <string name="medium_level_value">Kopi dengan kadar air di atas 25%.</string>
+    <string name="low_level">Low Level</string>
+    <string name="low_level_value">Kopi dengan kadar air di bawah 25%.</string>
+    <string name="refresh">REFRESH</string>
+    <string name="username">Username</string>
+    <string name="logout">LOGOUT</string>
+    <string name="smart">Smart Coffee Detection</string>
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kopi_regist"
+    tools:context=".SplashScreen">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:visibility="visible"
+        android:alpha="0.85"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/color_mix_one">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="282dp"
+                android:layout_height="168dp"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/color_mix_three"
+                android:contentDescription="@string/logo_splash"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:src="@drawable/logo2" />
+
+            <TextView
+                android:id="@+id/creator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/color_mix_two"
+                android:padding="1dp"
+                android:text="@string/water_level_detection_for_coffee_beans"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardInputSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:alpha="0.85"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/color_mix_one"
+            android:padding="2dp">
+
+            <ProgressBar
+                android:id="@+id/progressSplash"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/color_three"
+                android:progressTint="#b3fffa"
+                android:layout_margin="1dp"
+                android:visibility="visible"
+                tools:ignore="PrivateResource"
+                tools:targetApi="lollipop"
+                tools:visibility="visible" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

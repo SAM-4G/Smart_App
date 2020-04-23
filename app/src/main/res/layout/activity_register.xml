@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kopi_login2"
+    tools:context=".Register">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/registText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/registText"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:alpha="0.95"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailRegistInput"
+                    style="@style/TextInputLayoutApperance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="@string/email"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:endIconMode="clear_text"
+                    app:helperText="Enter your email"
+                    app:startIconDrawable="@drawable/email_icon">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/emailRegistInput1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passRegistInput"
+                    style="@style/TextInputLayoutApperance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/emailRegistInput"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="@string/password"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30"
+                    app:endIconMode="password_toggle"
+                    app:helperText="Enter your password"
+                    app:startIconDrawable="@drawable/password_icon"
+                    tools:targetApi="lollipop">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passRegistInput1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passRegistConfirmInput"
+                    style="@style/TextInputLayoutApperance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/passRegistInput"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="@string/confirm_password"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30"
+                    app:endIconMode="password_toggle"
+                    app:helperText="Confirm your password"
+                    app:startIconDrawable="@drawable/password_icon"
+                    tools:targetApi="lollipop">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passRegistConfirmInput1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phoneRegistInput"
+                    style="@style/TextInputLayoutApperance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/passRegistConfirmInput"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="@string/phone_number"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:endIconMode="clear_text"
+                    app:helperText="Enter your phone number"
+                    app:startIconDrawable="@drawable/phone_icon"
+                    tools:targetApi="lollipop">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phoneRegistInput1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/linearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardInput"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/button1Regist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:alpha="0.85"
+                android:background="@color/indigo_500">
+
+                <Button
+                    android:id="@+id/registButton"
+                    style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="@string/register"
+                    android:textColor="@color/indigo_500"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
