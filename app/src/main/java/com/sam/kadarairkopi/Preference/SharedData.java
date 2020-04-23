@@ -9,17 +9,17 @@ import com.sam.kadarairkopi.MainActivity;
 
 public class SharedData {
 
-    public static final String SHARED_PREF_NAME = "sharedData";
-    public static final String USER_EMAIL = "email";
-    public static final String USER_PASSWORD = "password";
-    public static final String USER_PHONE = "phone";
-    public static final String USER_ID = "id";
-    public static final String USER_LOGIN = "statusLogin";
+    private static final String SHARED_PREF_NAME = "sharedData";
+    private static final String USER_EMAIL = "email";
+    private static final String USER_PASSWORD = "password";
+    private static final String USER_PHONE = "phone";
+    private static final String USER_ID = "id";
+    public static final String USER_LOGIN_STATUS = "activeLogin";
 
-    public static SharedData mInstance;
-    public static Context mCtx;
+    private static SharedData mInstance;
+    private static Context mCtx;
 
-    public SharedData(Context context) {
+    private SharedData(Context context) {
         mCtx = context;
     }
 
@@ -58,9 +58,16 @@ public class SharedData {
         editor.apply();
     }
 
-    public boolean isLoggedIn() {
+    public void saveLoggedIn(String keyLog, Boolean value) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(USER_EMAIL, null) != null;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(keyLog, value);
+        editor.apply();
+    }
+
+    public boolean getSaveLoggedIn() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean(USER_LOGIN_STATUS, false);
     }
 
     public String LoggedInUser() {
@@ -74,5 +81,9 @@ public class SharedData {
         editor.clear();
         editor.apply();
         mCtx.startActivity(new Intent(mCtx, Login.class));
+    }
+
+    public void loginUser() {
+        mCtx.startActivity(new Intent(mCtx, MainActivity.class));
     }
 }

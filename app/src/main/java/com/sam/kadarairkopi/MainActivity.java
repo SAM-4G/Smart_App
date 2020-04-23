@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
@@ -23,27 +22,12 @@ public class MainActivity extends AppCompatActivity {
     Button refreshButton;
 
     @Override
-    public void onBackPressed() {
-        AlertDialog.Builder ab = new AlertDialog.Builder(MainActivity.this);
-        ab.setTitle("Logout or Exit").setIcon(R.drawable.user_icon);
-        ab.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                finish();
-                SharedData.getInstance(getApplicationContext()).logout();
-            }
-        });
-        ab.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
-                MainActivity.this.finish();
-            }
-        });
-        ab.show();
+    protected void onStart() {
+        super.onStart();
+        if (!SharedData.getInstance(this).getSaveLoggedIn()) {
+            finish();
+            SharedData.getInstance(getApplicationContext()).logout();
+        }
     }
 
     @Override
@@ -78,12 +62,37 @@ public class MainActivity extends AppCompatActivity {
         cardLabel3.getBackground().setAlpha(225);
         userName.getBackground().setAlpha(225);
 
-        if (!SharedData.getInstance(this).isLoggedIn()) {
-            startActivity(new Intent(this, Login.class));
-            finish();
-        }
 
+        setUser();
+    }
+
+    public void setUser() {
         String logUser = SharedData.getInstance(this).LoggedInUser();
         userName.setText(String.format("User : %s", logUser));
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder ab = new AlertDialog.Builder(MainActivity.this);
+        ab.setTitle("Logout or Exit").setIcon(R.drawable.user_icon);
+        ab.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finish();
+                SharedData.getInstance(getApplicationContext()).logout();
+            }
+        });
+        ab.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+                MainActivity.this.finish();
+            }
+        });
+        ab.show();
+    }
+
 }

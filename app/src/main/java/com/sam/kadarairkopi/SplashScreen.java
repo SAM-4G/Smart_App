@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class SplashScreen extends AppCompatActivity {
 
-    ImageView logo;
     ProgressBar progressBar;
     CardView cardMiddle, cardInput;
 
@@ -22,7 +20,6 @@ public class SplashScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
 
-        logo = findViewById(R.id.logo);
         progressBar = findViewById(R.id.progressSplash);
         cardMiddle = findViewById(R.id.cardMiddle);
         cardInput = findViewById(R.id.cardInputSplash);
@@ -32,15 +29,8 @@ public class SplashScreen extends AppCompatActivity {
 
         progressBar.setVisibility(View.INVISIBLE);
 
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Login();
-            }
-        });
 
         PlayScreen();
-
     }
 
     public void PlayScreen() {
