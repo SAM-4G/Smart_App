@@ -68,14 +68,14 @@ public class Login extends AppCompatActivity {
         ab.show();
     }
 
-    /*@Override
+    @Override
     protected void onStart() {
         super.onStart();
         if (SharedData.getInstance(this).isLoggedIn()) {
             startActivity(new Intent(this, Login.class));
             finish();
         }
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +100,6 @@ public class Login extends AppCompatActivity {
         button1.getBackground().setAlpha(225);
         button2.getBackground().setAlpha(225);
         logoLogin.getBackground().setAlpha(225);
-
-
 
         registerUser.setOnClickListener(new View.OnClickListener() {
             @Override
