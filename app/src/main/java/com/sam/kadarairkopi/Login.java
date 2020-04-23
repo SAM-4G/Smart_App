@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.sam.kadarairkopi.Data.DataUser;
 import com.sam.kadarairkopi.Preference.SharedData;
+import com.sam.kadarairkopi.Preference.VolleySing;
 import com.sam.kadarairkopi.UtilityAttribute.EncryptsMD5;
 import com.sam.kadarairkopi.UtilityAttribute.UrlClass;
 

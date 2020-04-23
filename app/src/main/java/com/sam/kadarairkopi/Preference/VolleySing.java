@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi;
+package com.sam.kadarairkopi.Preference;
 
 import android.content.Context;
 
@@ -24,7 +24,7 @@ public class VolleySing {
         return mInstance;
     }
 
-    public RequestQueue getRequestQueue() {
+    private  RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(mCtx.getApplicationContext());
         }
