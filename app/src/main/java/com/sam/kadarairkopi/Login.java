@@ -68,14 +68,14 @@ public class Login extends AppCompatActivity {
         ab.show();
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         if (SharedData.getInstance(this).isLoggedIn()) {
             startActivity(new Intent(this, Login.class));
             finish();
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
