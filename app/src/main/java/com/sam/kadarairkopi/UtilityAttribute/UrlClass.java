@@ -1,8 +1,10 @@
 package com.sam.kadarairkopi.UtilityAttribute;
 
+import com.sam.kadarairkopi.BuildConfig;
+
 public class UrlClass {
 
-    public static final String Url_Login = "http://2017.devcamp.tech/User.php";
-    public static final String Url_Register = "http://2017.devcamp.tech/Register.php";
-    public static final String Url_DataKopi = "http://2017.devcamp.tech/Data.php";
+    public static final String Url_Login = BuildConfig.BASE_URL + "User.php";
+    public static final String Url_Register = BuildConfig.BASE_URL + "Register.php";
+    public static final String Url_DataKopi = BuildConfig.BASE_URL + "Data.php";
 }
