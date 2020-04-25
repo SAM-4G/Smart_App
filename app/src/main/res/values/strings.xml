@@ -25,5 +25,5 @@
     <string name="refresh">REFRESH</string>
     <string name="username">Username</string>
     <string name="logout">LOGOUT</string>
-    <string name="smart">Smart Coffee Detection</string>
+    <string name="smart">Smart Coffee</string>
 </resources>
