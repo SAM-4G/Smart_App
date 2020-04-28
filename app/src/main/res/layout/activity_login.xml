@@ -47,7 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:background="@android:color/transparent">
+                android:background="@android:color/transparent"
+                tools:ignore="UselessParent">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/relativeBotIn2"
@@ -102,7 +103,8 @@
                                         android:id="@+id/emailInput1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:inputType="textEmailAddress" />
+                                        android:inputType="textEmailAddress"
+                                        tools:ignore="TooDeepLayout" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
 

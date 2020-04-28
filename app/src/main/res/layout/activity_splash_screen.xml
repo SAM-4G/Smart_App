@@ -51,7 +51,6 @@
                 android:textStyle="bold" />
 
         </RelativeLayout>
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -86,7 +85,5 @@
                 tools:visibility="visible" />
 
         </RelativeLayout>
-
     </androidx.cardview.widget.CardView>
-
 </RelativeLayout>
