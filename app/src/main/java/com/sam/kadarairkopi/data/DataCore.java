@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi.Data;
+package com.sam.kadarairkopi.data;
 
 import org.json.JSONObject;
 

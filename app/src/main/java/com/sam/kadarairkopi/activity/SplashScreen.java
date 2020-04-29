@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi;
+package com.sam.kadarairkopi.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+
+import com.sam.kadarairkopi.R;
 
 public class SplashScreen extends AppCompatActivity {
 

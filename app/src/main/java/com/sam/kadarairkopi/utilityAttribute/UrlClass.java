@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi.UtilityAttribute;
+package com.sam.kadarairkopi.utilityAttribute;
 
 import com.sam.kadarairkopi.BuildConfig;
 

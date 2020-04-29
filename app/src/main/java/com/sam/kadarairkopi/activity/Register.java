@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi;
+package com.sam.kadarairkopi.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -19,9 +19,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.sam.kadarairkopi.Preference.VolleySing;
-import com.sam.kadarairkopi.UtilityAttribute.EncryptsMD5;
-import com.sam.kadarairkopi.UtilityAttribute.UrlClass;
+import com.sam.kadarairkopi.preference.VolleySing;
+import com.sam.kadarairkopi.R;
+import com.sam.kadarairkopi.utilityAttribute.EncryptsMD5;
+import com.sam.kadarairkopi.utilityAttribute.UrlClass;
 
 import org.json.JSONException;
 import org.json.JSONObject;

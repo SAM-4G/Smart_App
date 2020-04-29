@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi;
+package com.sam.kadarairkopi.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,11 +23,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.sam.kadarairkopi.Data.DataUser;
-import com.sam.kadarairkopi.Preference.SharedData;
-import com.sam.kadarairkopi.Preference.VolleySing;
-import com.sam.kadarairkopi.UtilityAttribute.EncryptsMD5;
-import com.sam.kadarairkopi.UtilityAttribute.UrlClass;
+import com.sam.kadarairkopi.data.DataUser;
+import com.sam.kadarairkopi.preference.SharedData;
+import com.sam.kadarairkopi.preference.VolleySing;
+import com.sam.kadarairkopi.R;
+import com.sam.kadarairkopi.utilityAttribute.EncryptsMD5;
+import com.sam.kadarairkopi.utilityAttribute.UrlClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,8 +52,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onStart() {
         super.onStart();
         if (SharedData.getInstance(this).getSaveLoggedIn()) {
-            Login.this.finish();
-            SharedData.getInstance(getApplicationContext()).loginUser();
+            goToMainActivity();
+        } else if (!SharedData.getInstance(this).getSaveLoggedIn()) {
+            String lastLogin = SharedData.getInstance(this).LoggedInUser();
+            emailInput.setText(lastLogin);
         }
     }
 
@@ -105,9 +108,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                Login.this.finish();
                 android.os.Process.killProcess(android.os.Process.myPid());
                 System.exit(1);
-                Login.this.finish();
             }
         });
         ab.setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -10,13 +10,16 @@
         android:label="@string/smart"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
+
         <activity
-            android:name=".Register"
+            android:name=".activity.Register"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>
+
         <activity
-            android:name=".SplashScreen"
+            android:name=".activity.SplashScreen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:noHistory="true">
             <intent-filter>
@@ -25,12 +28,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Login"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-    </application>
 
+        <activity
+            android:name=".activity.Login"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+
+    </application>
 </manifest>

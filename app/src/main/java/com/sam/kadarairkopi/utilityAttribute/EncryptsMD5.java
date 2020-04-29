@@ -1,7 +1,7 @@
-package com.sam.kadarairkopi.UtilityAttribute;
+package com.sam.kadarairkopi.utilityAttribute;
 
-import com.sam.kadarairkopi.Login;
-import com.sam.kadarairkopi.Register;
+import com.sam.kadarairkopi.activity.Login;
+import com.sam.kadarairkopi.activity.Register;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

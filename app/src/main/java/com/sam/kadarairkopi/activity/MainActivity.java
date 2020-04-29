@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi;
+package com.sam.kadarairkopi.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.sam.kadarairkopi.Preference.SharedData;
+import com.sam.kadarairkopi.preference.SharedData;
+import com.sam.kadarairkopi.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                finish();
+                MainActivity.this.finish();
                 SharedData.getInstance(getApplicationContext()).logout();
             }
         });
@@ -87,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                MainActivity.this.finish();
                 android.os.Process.killProcess(android.os.Process.myPid());
                 System.exit(1);
-                MainActivity.this.finish();
             }
         });
         ab.show();

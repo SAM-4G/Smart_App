@@ -1,11 +1,10 @@
-package com.sam.kadarairkopi.Preference;
+package com.sam.kadarairkopi.preference;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.sam.kadarairkopi.Login;
-import com.sam.kadarairkopi.MainActivity;
+import com.sam.kadarairkopi.activity.Login;
 
 public class SharedData {
 
@@ -40,6 +39,7 @@ public class SharedData {
     public void storeUserEmail(String names) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(USER_EMAIL);
         editor.putString(USER_EMAIL, names);
         editor.apply();
     }
@@ -78,12 +78,9 @@ public class SharedData {
     public void logout() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
+        editor.remove(USER_PASSWORD);
+        editor.remove(USER_LOGIN_STATUS);
         editor.apply();
         mCtx.startActivity(new Intent(mCtx, Login.class));
-    }
-
-    public void loginUser() {
-        mCtx.startActivity(new Intent(mCtx, MainActivity.class));
     }
 }

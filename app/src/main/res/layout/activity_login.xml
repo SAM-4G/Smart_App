@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/kopi_login"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".activity.Login">
 
     <RelativeLayout
         android:layout_width="match_parent"

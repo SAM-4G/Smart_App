@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi.Preference;
+package com.sam.kadarairkopi.preference;
 
 import android.content.Context;
 
