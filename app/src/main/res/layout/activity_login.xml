@@ -30,7 +30,7 @@
                 android:elevation="@dimen/cardview_default_radius"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:src="@drawable/logo2"
+                android:src="@drawable/logo"
                 tools:ignore="PrivateResource"
                 tools:targetApi="lollipop" />
 
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:alpha="0.85"
-                    app:cardBackgroundColor="@color/cyan_500"
+                    app:cardBackgroundColor="@color/colorAccent"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="2dp">
 
@@ -104,6 +104,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:inputType="textEmailAddress"
+                                        android:textColor="@color/colorAccent"
                                         tools:ignore="TooDeepLayout" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -130,6 +131,7 @@
                                         android:id="@+id/passInput1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
+                                        android:textColor="@color/colorAccent"
                                         android:inputType="textPassword" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -153,7 +155,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="4dp"
                         android:alpha="0.85"
-                        android:background="@color/indigo_500">
+                        android:background="@color/colorAccentDark">
 
                         <Button
                             android:id="@+id/loginButton"
@@ -163,7 +165,7 @@
                             android:paddingLeft="2dp"
                             android:paddingRight="2dp"
                             android:text="@string/login"
-                            android:textColor="@color/indigo_500"
+                            android:textColor="@color/colorAccentDark"
                             android:textSize="16sp" />
                     </RelativeLayout>
 
@@ -175,7 +177,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="4dp"
                         android:alpha="0.85"
-                        android:background="@color/indigo_500">
+                        android:background="@color/colorAccentDark">
 
                         <Button
                             android:id="@+id/registerButton"
@@ -185,7 +187,7 @@
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:text="@string/register"
-                            android:textColor="@color/indigo_500"
+                            android:textColor="@color/colorAccentDark"
                             android:textSize="16sp" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -198,9 +200,8 @@
             android:layout_height="72dp"
             android:layout_below="@+id/relativeTop"
             android:layout_centerHorizontal="true"
-            android:alpha="0.85"
             android:background="@drawable/background_profile"
             android:contentDescription="@string/user_icon"
-            android:src="@drawable/user_icon" />
+            android:src="@drawable/ic_person_black_24dp" />
     </RelativeLayout>
 </ScrollView>

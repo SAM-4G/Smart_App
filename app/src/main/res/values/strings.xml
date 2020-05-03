@@ -22,7 +22,7 @@
     <string name="medium_level_value">Kopi dengan kadar air di atas 25%.</string>
     <string name="low_level">Low Level</string>
     <string name="low_level_value">Kopi dengan kadar air di bawah 25%.</string>
-    <string name="refresh">REFRESH</string>
+    <string name="result">RESULT</string>
     <string name="username">Username</string>
     <string name="logout">LOGOUT</string>
     <string name="smart">Smart Coffee</string>

@@ -3,11 +3,17 @@ package com.sam.kadarairkopi.activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.DialogCompat;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sam.kadarairkopi.preference.SharedData;
@@ -18,9 +24,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity {
 
     CircleImageView circleImageView, circleImageView2;
-    TextView waterLevel, waterLevel2, weight, weight2, userName;
+    TextView waterLevel, waterLevel2, weight, weight2, userName, note, weightVal, waterVal;
     CardView cardView, cardLabel1, cardLabel2, cardLabel3;
-    Button refreshButton;
+    Button resultButton;
+    ImageView closePopUp, resultIcon;
+    Dialog resultDialog;
 
     @Override
     protected void onStart() {
@@ -51,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         cardLabel2 = findViewById(R.id.cardLabel2);
         cardLabel3 = findViewById(R.id.cardLabel3);
 
-        refreshButton = findViewById(R.id.buttonRefresh);
+        resultButton = findViewById(R.id.buttonRefresh);
 
         circleImageView.getBackground().setAlpha(225);
         circleImageView2.getBackground().setAlpha(225);
         cardView.getBackground().setAlpha(225);
-        waterLevel2.getBackground().setAlpha(75);
-        weight2.getBackground().setAlpha(75);
+        waterLevel2.getBackground().setAlpha(225);
+        weight2.getBackground().setAlpha(225);
         cardLabel1.getBackground().setAlpha(225);
         cardLabel2.getBackground().setAlpha(225);
         cardLabel3.getBackground().setAlpha(225);
@@ -65,6 +73,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         setUser();
+
+        resultButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resultDialog = new Dialog(MainActivity.this);
+                showResult();
+            }
+        });
     }
 
     public void setUser() {
@@ -94,6 +110,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ab.show();
+    }
+
+    public void showResult() {
+        resultDialog.setContentView(R.layout.pop_up_result);
+
+        String resultValue;
+
+        closePopUp = resultDialog.findViewById(R.id.closeTop);
+        resultIcon = resultDialog.findViewById(R.id.resultIcon);
+        note = resultDialog.findViewById(R.id.noteResult);
+        weightVal = resultDialog.findViewById(R.id.weightValue);
+        waterVal = resultDialog.findViewById(R.id.waterValue);
+
+        closePopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resultDialog.dismiss();
+            }
+        });
+
+        resultDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        resultDialog.show();
+
     }
 
 }

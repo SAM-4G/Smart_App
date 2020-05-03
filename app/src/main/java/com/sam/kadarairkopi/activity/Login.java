@@ -71,14 +71,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         passInput = findViewById(R.id.passInput1);
         cardView = findViewById(R.id.cardInput);
         overlayCard = findViewById(R.id.relativeBotIn2);
-        imageButton = findViewById(R.id.imageButton);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         logoLogin = findViewById(R.id.logoLogin);
 
         cardView.getBackground().setAlpha(225);
         overlayCard.getBackground().setAlpha(225);
-        imageButton.getBackground().setAlpha(225);
         button1.getBackground().setAlpha(225);
         button2.getBackground().setAlpha(225);
         logoLogin.getBackground().setAlpha(225);

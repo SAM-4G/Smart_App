@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#a79fff</color>
-    <color name="colorPrimaryDark">#7571cb</color>
-    <color name="colorAccent">#dbd0ff</color>
+    <color name="colorPrimary">#98651e</color>
+    <color name="colorPrimaryDark">#6e4b1f</color>
+    <color name="colorAccent">#f0d394</color>
+    <color name="colorAccentDark">#533710</color>
 
     <!--    Added Color-->
     <color name="purple_500">#9c27b0</color>
