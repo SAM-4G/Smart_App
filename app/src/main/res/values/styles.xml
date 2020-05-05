@@ -20,9 +20,14 @@
         <item name="errorTextAppearance">@style/ErrorText</item>
         <item name="android:textColorHint">@color/colorAccent</item>
         <item name="colorControlActivated">@android:color/white</item>
-        <item name="android:colorControlNormal" tools:targetApi="lollipop">@android:color/white</item>
-        <item name="android:colorControlActivated" tools:targetApi="lollipop">@android:color/holo_blue_bright</item>
-        <item name="android:colorControlHighlight" tools:targetApi="lollipop">@android:color/holo_green_light</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">@android:color/white
+        </item>
+        <item name="android:colorControlActivated" tools:targetApi="lollipop">
+            @android:color/holo_blue_bright
+        </item>
+        <item name="android:colorControlHighlight" tools:targetApi="lollipop">
+            @android:color/holo_green_light
+        </item>
         <item name="helperTextTextColor">@color/colorAccent</item>
         <item name="counterTextColor">@color/colorAccent</item>
         <item name="counterOverflowTextColor">@android:color/holo_red_dark</item>

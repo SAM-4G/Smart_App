@@ -28,4 +28,5 @@ public class EncryptsMD5 {
         }
         return digest;
     }
+
 }

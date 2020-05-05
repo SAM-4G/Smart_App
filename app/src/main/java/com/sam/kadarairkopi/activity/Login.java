@@ -23,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.sam.kadarairkopi.utilityAttribute.ClickUtility;
 import com.sam.kadarairkopi.data.DataUser;
 import com.sam.kadarairkopi.preference.SharedData;
 import com.sam.kadarairkopi.preference.VolleySing;
@@ -45,7 +46,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText passInput;
     CardView cardView, overlayCard;
     ImageView logoLogin;
-    ImageButton imageButton;
     RelativeLayout button1, button2;
 
     @Override
@@ -124,6 +124,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.loginButton:
+                ClickUtility.clickSession(view);
+
                 final String email = emailInput.getText().toString();
                 final String password = passInput.getText().toString();
                 final String passEncrypt = EncryptsMD5.MD5(password);
