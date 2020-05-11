@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="46dp"
-                        android:text="@string/percentage"
+                        android:text="@string/water_level_value"
                         android:textAlignment="center"
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="24sp"
@@ -257,7 +257,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
-                                android:text="@string/medium_level"
+                                android:text="@string/good_level"
                                 android:textColor="@android:color/holo_orange_light"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -268,7 +268,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/headTwo"
                                 android:layout_marginStart="32dp"
-                                android:text="@string/medium_level_value"
+                                android:text="@string/good_level_value"
                                 android:textColor="@color/colorPrimary" />
 
                         </RelativeLayout>

@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         cardLabel3.getBackground().setAlpha(225);
         userName.getBackground().setAlpha(225);
 
-
         setUser();
 
         resultButton.setOnClickListener(new View.OnClickListener() {
@@ -116,12 +115,22 @@ public class MainActivity extends AppCompatActivity {
         resultDialog.setContentView(R.layout.pop_up_result);
 
         String resultValue;
+        resultValue = "12";
 
         closePopUp = resultDialog.findViewById(R.id.closeTop);
         resultIcon = resultDialog.findViewById(R.id.resultIcon);
         note = resultDialog.findViewById(R.id.noteResult);
         weightVal = resultDialog.findViewById(R.id.weightValue);
         waterVal = resultDialog.findViewById(R.id.waterValue);
+
+        if (waterVal.getText().equals(resultValue)) {
+            resultIcon.setImageResource(R.drawable.ic_check_circle_black_24dp);
+            note.setText(R.string.good_quality_coffee_beans);
+        }
+        if (!waterVal.getText().equals(resultValue)) {
+            resultIcon.setImageResource(R.drawable.ic_error_outline_black_24dp);
+            note.setText(R.string.bad_quality_coffee_beans);
+        }
 
         closePopUp.setOnClickListener(new View.OnClickListener() {
             @Override

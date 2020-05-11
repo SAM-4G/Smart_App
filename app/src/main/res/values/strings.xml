@@ -1,29 +1,47 @@
 <resources>
 
+<!--    App-Name-->
+    <string name="smart">Smart Coffee</string>
+
+<!--    Activity-Splash-->
     <string name="logo_splash">Logo Splash</string>
     <string name="water_level_detection_for_coffee_beans">Water Level Detection for Coffee Beans</string>
-    <string name="user_icon">User Icon</string>
-    <string name="register">REGISTER</string>
-    <string name="login">LOGIN</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
+
+<!--    Activity-Login & Register-->
+<!--      Login-->
     <string name="logo_login">Logo Login</string>
+    <string name="login">LOGIN</string>
+    <string name="user_icon">User Icon</string>
+<!--      Both-->
+    <string name="register">REGISTER</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+<!--      Register-->
     <string name="confirm_password">Confirm Password</string>
     <string name="phone_number">Phone Number</string>
+
+<!--    Activity-Main-->
+<!--      Main-->
     <string name="detection">DETECTION</string>
-    <string name="percentage">0</string>
-    <string name="water_level">WATER LEVEL (%)</string>
-    <string name="weight_value">0</string>
-    <string name="weight">WEIGHT (KG)</string>
     <string name="indicator">INDICATOR</string>
     <string name="high_level">High Level</string>
-    <string name="high_level_value">Kopi dengan kadar air di atas 55%.</string>
-    <string name="medium_level">Medium Level</string>
-    <string name="medium_level_value">Kopi dengan kadar air di atas 25%.</string>
+    <string name="high_level_value">Kopi dengan kadar air di atas 12%.</string>
+    <string name="good_level">Good Level</string>
+    <string name="good_level_value">Kopi dengan kadar air 12%.</string>
     <string name="low_level">Low Level</string>
-    <string name="low_level_value">Kopi dengan kadar air di bawah 25%.</string>
-    <string name="result">RESULT</string>
+    <string name="low_level_value">Kopi dengan kadar air di bawah 12%.</string>
     <string name="username">Username</string>
-    <string name="logout">LOGOUT</string>
-    <string name="smart">Smart Coffee</string>
+<!--      Both-->
+    <string name="result">RESULT</string>
+    <string name="weight">WEIGHT (KG)</string>
+    <string name="water_level">WATER LEVEL (%)</string>
+    <string name="water_level_value">12</string>
+    <string name="weight_value">2</string>
+<!--      Pop-Up-Dialog-->
+    <string name="closepopup">closePopUp</string>
+    <string name="your_coffee_is">Your Coffee is</string>
+    <string name="icon_result">Icon Result</string>
+    <string name="good_quality_coffee_beans">Good quality coffee beans</string>
+    <string name="bad_quality_coffee_beans">Bad quality coffee beans</string>
+
 </resources>

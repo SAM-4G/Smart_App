@@ -15,7 +15,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/close_top"
-        android:contentDescription="closePopUp"
+        android:contentDescription="@string/closepopup"
         android:src="@drawable/ic_close_black_24dp" />
 
     <LinearLayout
@@ -33,7 +33,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="4dp"
             android:padding="2dp"
-            android:text="RESULT"
+            android:text="@string/result"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="WEIGHT"
+                android:text="@string/weight"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="WATER LEVEL"
+                android:text="@string/water_level"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="0"
+                android:text="@string/weight_value"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="32sp" />
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="0"
+                android:text="@string/water_level_value"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="32sp" />
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="8dp"
-                android:text="Your Coffee is"
+                android:text="@string/your_coffee_is"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -135,7 +135,7 @@
                 android:layout_below="@+id/head"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="8dp"
-                android:contentDescription="Icon Result"
+                android:contentDescription="@string/icon_result"
                 android:src="@drawable/ic_check_circle_black_24dp" />
 
             <TextView
@@ -146,7 +146,7 @@
                 android:layout_margin="8dp"
                 android:background="@drawable/color_two"
                 android:padding="4dp"
-                android:text="Good quality coffee beans"
+                android:text="@string/good_quality_coffee_beans"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
