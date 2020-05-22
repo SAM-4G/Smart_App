@@ -54,9 +54,31 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         if (SharedData.getInstance(this).getSaveLoggedIn()) {
             goToMainActivity();
         } else if (!SharedData.getInstance(this).getSaveLoggedIn()) {
-            String lastLogin = SharedData.getInstance(this).LoggedInUser();
+            String lastLogin = SharedData.getInstance(this).getUserEmail();
             emailInput.setText(lastLogin);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder ab = new AlertDialog.Builder(Login.this);
+        ab.setTitle("are you sure to exit?").setIcon(R.drawable.user_icon);
+        ab.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Login.this.finish();
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+        });
+        ab.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        ab.show();
     }
 
     @Override
@@ -83,41 +105,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         registerUser.setOnClickListener(this);
         loginUser.setOnClickListener(this);
-    }
-
-    public void goToMainActivity() {
-        Intent intent = new Intent(Login.this, MainActivity.class);
-        Login.this.finish();
-        startActivity(intent);
-    }
-
-    public void goToRegister() {
-        Intent intent = new Intent(Login.this, Register.class);
-        startActivity(intent);
-        emailInput.getText().clear();
-        passInput.getText().clear();
-    }
-
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder ab = new AlertDialog.Builder(Login.this);
-        ab.setTitle("are you sure to exit?").setIcon(R.drawable.user_icon);
-        ab.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                Login.this.finish();
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
-            }
-        });
-        ab.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        ab.show();
     }
 
     @Override
@@ -202,4 +189,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 goToRegister();
         }
     }
+
+    public void goToMainActivity() {
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        Login.this.finish();
+        startActivity(intent);
+    }
+
+    public void goToRegister() {
+        Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
+        emailInput.getText().clear();
+        passInput.getText().clear();
+    }
+
 }

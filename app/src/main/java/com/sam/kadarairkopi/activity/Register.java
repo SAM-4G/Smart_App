@@ -37,6 +37,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     CardView cardView;
     RelativeLayout button1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,4 +125,5 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             }
         }
     }
+
 }

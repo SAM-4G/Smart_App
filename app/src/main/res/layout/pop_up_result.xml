@@ -1,156 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="320dp"
-    android:layout_height="372dp"
-    android:layout_gravity="center_horizontal"
-    android:layout_margin="16dp"
-    android:background="@color/colorAccentDark">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/closeTop"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/close_top"
-        android:contentDescription="@string/closepopup"
-        android:src="@drawable/ic_close_black_24dp" />
-
-    <LinearLayout
-        android:id="@+id/linearField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/closeTop"
-        android:layout_margin="8dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/resultText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="4dp"
-            android:padding="2dp"
-            android:text="@string/result"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/weightField"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:text="@string/weight"
-                android:textAlignment="center"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/waterField"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:text="@string/water_level"
-                android:textAlignment="center"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/weightValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:text="@string/weight_value"
-                android:textAlignment="center"
-                android:textColor="@color/colorAccent"
-                android:textSize="32sp" />
-
-            <TextView
-                android:id="@+id/waterValue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:text="@string/water_level_value"
-                android:textAlignment="center"
-                android:textColor="@color/colorAccent"
-                android:textSize="32sp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearField"
-        android:layout_centerHorizontal="true"
+    <RelativeLayout
+        android:layout_width="320dp"
+        android:layout_height="372dp"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp">
+        android:background="@color/colorAccentDark">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/closeTop"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/close_top"
+            android:contentDescription="@string/closepopup"
+            android:src="@drawable/ic_close_black_24dp" />
+
+        <LinearLayout
+            android:id="@+id/linearField"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/closeTop"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/head"
+                android:id="@+id/resultText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="8dp"
-                android:text="@string/your_coffee_is"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:padding="2dp"
+                android:text="@string/result"
+                android:textAlignment="center"
                 android:textColor="@color/colorAccent"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/resultIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/head"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="8dp"
-                android:contentDescription="@string/icon_result"
-                android:src="@drawable/ic_check_circle_black_24dp" />
-
-            <TextView
-                android:id="@+id/noteResult"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/resultIcon"
-                android:layout_margin="8dp"
-                android:background="@drawable/color_two"
-                android:padding="4dp"
-                android:text="@string/good_quality_coffee_beans"
-                android:textAlignment="center"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/weightField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/weight"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/waterField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/water_level"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/weightValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/weight_value"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/waterValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/water_level_value"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="32sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearField"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark">
+
+                <TextView
+                    android:id="@+id/head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="8dp"
+                    android:text="@string/your_coffee_is"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/resultIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/head"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="8dp"
+                    android:contentDescription="@string/icon_result"
+                    android:src="@drawable/ic_check_circle_black_24dp" />
+
+                <TextView
+                    android:id="@+id/noteResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/resultIcon"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/color_two"
+                    android:padding="4dp"
+                    android:text="@string/good_quality_coffee_beans"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</ScrollView>

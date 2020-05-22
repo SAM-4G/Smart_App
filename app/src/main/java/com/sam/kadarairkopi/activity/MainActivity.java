@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     CardView cardView, cardLabel1, cardLabel2, cardLabel3;
     Button resultButton;
     ImageView closePopUp, resultIcon;
-    Dialog resultDialog;
+    Dialog resultDialog, indicatorDialog;
 
     @Override
     protected void onStart() {
@@ -37,6 +37,30 @@ public class MainActivity extends AppCompatActivity {
             finish();
             SharedData.getInstance(getApplicationContext()).logout();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder ab = new AlertDialog.Builder(MainActivity.this);
+        ab.setTitle("Logout or Exit").setIcon(R.drawable.user_icon);
+        ab.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                MainActivity.this.finish();
+                SharedData.getInstance(getApplicationContext()).logout();
+            }
+        });
+        ab.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                MainActivity.this.finish();
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+        });
+        ab.show();
     }
 
     @Override
@@ -73,6 +97,14 @@ public class MainActivity extends AppCompatActivity {
 
         setUser();
 
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                indicatorDialog = new Dialog(MainActivity.this);
+                showIndicator();
+            }
+        });
+
         resultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,32 +115,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setUser() {
-        String logUser = SharedData.getInstance(this).LoggedInUser();
+        String logUser = SharedData.getInstance(this).getUserEmail();
         userName.setText(String.format("User : %s", logUser));
-    }
-
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder ab = new AlertDialog.Builder(MainActivity.this);
-        ab.setTitle("Logout or Exit").setIcon(R.drawable.user_icon);
-        ab.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                MainActivity.this.finish();
-                SharedData.getInstance(getApplicationContext()).logout();
-            }
-        });
-        ab.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                MainActivity.this.finish();
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
-            }
-        });
-        ab.show();
     }
 
     public void showResult() {
@@ -141,6 +149,22 @@ public class MainActivity extends AppCompatActivity {
 
         resultDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         resultDialog.show();
+
+    }
+
+    private void showIndicator() {
+        indicatorDialog.setContentView(R.layout.indicator_detail);
+
+        closePopUp = indicatorDialog.findViewById(R.id.closeTop);
+        closePopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                indicatorDialog.dismiss();
+            }
+        });
+
+        indicatorDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        indicatorDialog.show();
 
     }
 

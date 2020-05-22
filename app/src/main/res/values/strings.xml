@@ -1,47 +1,54 @@
 <resources>
 
-<!--    App-Name-->
+    <!--    App-Name-->
     <string name="smart">Smart Coffee</string>
 
-<!--    Activity-Splash-->
+    <!--    Activity-Splash-->
     <string name="logo_splash">Logo Splash</string>
     <string name="water_level_detection_for_coffee_beans">Water Level Detection for Coffee Beans</string>
 
-<!--    Activity-Login & Register-->
-<!--      Login-->
+    <!--    Activity-Login & Register-->
+    <!--      Login-->
     <string name="logo_login">Logo Login</string>
     <string name="login">LOGIN</string>
     <string name="user_icon">User Icon</string>
-<!--      Both-->
+    <!--      Both-->
     <string name="register">REGISTER</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-<!--      Register-->
+    <!--      Register-->
     <string name="confirm_password">Confirm Password</string>
     <string name="phone_number">Phone Number</string>
 
-<!--    Activity-Main-->
-<!--      Main-->
+    <!--    Activity-Main-->
+    <!--      Main-->
     <string name="detection">DETECTION</string>
     <string name="indicator">INDICATOR</string>
-    <string name="high_level">High Level</string>
     <string name="high_level_value">Kopi dengan kadar air di atas 12%.</string>
-    <string name="good_level">Good Level</string>
     <string name="good_level_value">Kopi dengan kadar air 12%.</string>
-    <string name="low_level">Low Level</string>
     <string name="low_level_value">Kopi dengan kadar air di bawah 12%.</string>
     <string name="username">Username</string>
-<!--      Both-->
+
+    <!--      Both-->
     <string name="result">RESULT</string>
     <string name="weight">WEIGHT (KG)</string>
     <string name="water_level">WATER LEVEL (%)</string>
     <string name="water_level_value">12</string>
     <string name="weight_value">2</string>
-<!--      Pop-Up-Dialog-->
+    <!--      Pop-Up-Dialog-->
     <string name="closepopup">closePopUp</string>
     <string name="your_coffee_is">Your Coffee is</string>
     <string name="icon_result">Icon Result</string>
     <string name="good_quality_coffee_beans">Good quality coffee beans</string>
     <string name="bad_quality_coffee_beans">Bad quality coffee beans</string>
+
+    <!--      Both-->
+    <string name="high_level">High Level</string>
+    <string name="good_level">Good Level</string>
+    <string name="low_level">Low Level</string>
+    <!--    Detail Indicator-->
+    <string name="high_level_detail">Kopi dengan kadar air di atas 12%. Kopi kurang bagus, karena dengan kadar air di atas 12% bertekstur lebih lunak sehingga membuat aroma kopi rusak dan cepat membusuk.</string>
+    <string name="good_level_detail">Kopi dengan kadar air 12%. Kopi kualitas baik, tekstur dan aroma maksimal.</string>
+    <string name="low_level_detail">Kopi dengan kadar air di bawah 12%. Kopi tidak bagus, dengan kadar air di bawah 12% menjadikan kopi terlalu kering dan akan memicu retakan pada bagian terluar biji kopi bahkan dapat menghilangkan aroma kopi.</string>
 
 </resources>

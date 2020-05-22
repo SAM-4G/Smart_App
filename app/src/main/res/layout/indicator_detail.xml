@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="360dp"
+        android:layout_height="420dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:background="@color/colorAccentDark">
+
+        <ImageView
+            android:id="@+id/closeTop"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/close_top"
+            android:contentDescription="@string/closepopup"
+            android:src="@drawable/ic_close_black_24dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardIndicator1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/closeTop"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:alpha="0.85"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorPrimary">
+
+                <RelativeLayout
+                    android:id="@+id/linearIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardLabel1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.85"
+                        android:background="@android:color/transparent"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent">
+
+                            <TextView
+                                android:id="@+id/headOne"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/high_level"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/descOne2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/headOne"
+                                android:layout_marginStart="32dp"
+                                android:text="@string/high_level_detail"
+                                android:textColor="@color/colorPrimary" />
+
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardLabel2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardLabel1"
+                        android:layout_marginTop="8dp"
+                        android:alpha="0.85"
+                        android:background="@android:color/transparent"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent">
+
+                            <TextView
+                                android:id="@+id/headTwo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/good_level"
+                                android:textColor="@android:color/holo_orange_light"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/descTwo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/headTwo"
+                                android:layout_marginStart="32dp"
+                                android:text="@string/good_level_detail"
+                                android:textColor="@color/colorPrimary" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardLabel3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardLabel2"
+                        android:layout_marginTop="8dp"
+                        android:alpha="0.85"
+                        android:background="@android:color/transparent"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="4dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent">
+
+                            <TextView
+                                android:id="@+id/headThree"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/low_level"
+                                android:textColor="@android:color/holo_green_light"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/descThree"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/headThree"
+                                android:layout_marginStart="32dp"
+                                android:text="@string/low_level_detail"
+                                android:textColor="@color/colorPrimary" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
