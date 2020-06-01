@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,328 +8,334 @@
     android:background="@drawable/kopi_login3"
     tools:context=".activity.MainActivity">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/kadarAir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-            android:text="@string/detection"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="48sp"
-            android:textStyle="bold" />
-
         <RelativeLayout
-            android:id="@+id/relativeBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/kadarAir"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="8dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/kadarAir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                tools:ignore="UselessParent">
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
+                android:text="@string/detection"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/relativeBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/kadarAir"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    tools:ignore="UselessParent">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/circle"
+                            android:layout_width="124dp"
+                            android:layout_height="124dp"
+                            android:layout_centerHorizontal="true"
+                            android:alpha="0.75"
+                            android:background="@drawable/background_profile" />
+
+                        <TextView
+                            android:id="@+id/waterLevel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="46dp"
+                            android:text="@string/water_level_value"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/holo_green_light"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/waterLevelText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/circle"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:alpha="0.85"
+                            android:background="@drawable/color_two"
+                            android:padding="4dp"
+                            android:text="@string/water_level"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/circle2"
+                            android:layout_width="124dp"
+                            android:layout_height="124dp"
+                            android:layout_centerHorizontal="true"
+                            android:alpha="0.75"
+                            android:background="@drawable/background_profile" />
+
+                        <TextView
+                            android:id="@+id/weightBeans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="46dp"
+                            android:text="@string/weight_value"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/weightBeansText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/circle2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="8dp"
+                            android:alpha="0.85"
+                            android:background="@drawable/color_two"
+                            android:padding="4dp"
+                            android:text="@string/weight"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearButtonRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeBox"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
 
                 <RelativeLayout
-                    android:layout_width="0dp"
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1">
+                    android:layout_marginBottom="4dp"
+                    android:alpha="0.85"
+                    android:background="@color/colorAccentDark"
+                    tools:ignore="UselessParent">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle"
-                        android:layout_width="124dp"
-                        android:layout_height="124dp"
-                        android:layout_centerHorizontal="true"
-                        android:alpha="0.75"
-                        android:background="@drawable/background_profile" />
-
-                    <TextView
-                        android:id="@+id/waterLevel"
+                    <Button
+                        android:id="@+id/buttonRefresh"
+                        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="46dp"
-                        android:text="@string/water_level_value"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/waterLevelText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/circle"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
                         android:alpha="0.85"
-                        android:background="@drawable/color_two"
-                        android:padding="4dp"
-                        android:text="@string/water_level"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle2"
-                        android:layout_width="124dp"
-                        android:layout_height="124dp"
-                        android:layout_centerHorizontal="true"
-                        android:alpha="0.75"
-                        android:background="@drawable/background_profile" />
-
-                    <TextView
-                        android:id="@+id/weightBeans"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="46dp"
-                        android:text="@string/weight_value"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/weightBeansText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/circle2"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
-                        android:alpha="0.85"
-                        android:background="@drawable/color_two"
-                        android:padding="4dp"
-                        android:text="@string/weight"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:text="@string/result"
+                        android:textColor="@color/colorAccentDark"
+                        android:textSize="18sp" />
 
                 </RelativeLayout>
             </LinearLayout>
-        </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/linearButtonRefresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relativeBox"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:id="@+id/button1"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardIndicator1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_below="@+id/linearButtonRefresh"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="72dp"
                 android:alpha="0.85"
-                android:background="@color/colorAccentDark"
-                tools:ignore="UselessParent">
-
-                <Button
-                    android:id="@+id/buttonRefresh"
-                    style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:alpha="0.85"
-                    android:text="@string/result"
-                    android:textColor="@color/colorAccentDark"
-                    android:textSize="18sp" />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardIndicator1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearButtonRefresh"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="72dp"
-            android:alpha="0.85"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@color/colorPrimary">
-
-                <TextView
-                    android:id="@+id/indicatorText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/indicator"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
                 <RelativeLayout
-                    android:id="@+id/linearIndicator"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorPrimary">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardLabel1"
+                    <TextView
+                        android:id="@+id/indicatorText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/indicator"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:id="@+id/linearIndicator"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:alpha="0.85"
-                        android:background="@android:color/transparent"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="48dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp">
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardLabel1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent">
+                            android:alpha="0.85"
+                            android:background="@android:color/transparent"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp">
 
-                            <TextView
-                                android:id="@+id/headOne"
+                            <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:text="@string/high_level"
-                                android:textColor="@android:color/holo_red_light"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:background="@android:color/transparent">
 
-                            <TextView
-                                android:id="@+id/descOne"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/headOne"
-                                android:layout_marginStart="32dp"
-                                android:text="@string/high_level_value"
-                                android:textColor="@color/colorPrimary" />
+                                <TextView
+                                    android:id="@+id/headOne"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="@string/high_level"
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                                <TextView
+                                    android:id="@+id/descOne"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/headOne"
+                                    android:layout_marginStart="32dp"
+                                    android:text="@string/high_level_value"
+                                    android:textColor="@color/colorPrimary" />
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardLabel2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/cardLabel1"
-                        android:layout_marginTop="2dp"
-                        android:alpha="0.85"
-                        android:background="@android:color/transparent"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardLabel2"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent">
+                            android:layout_below="@+id/cardLabel1"
+                            android:layout_marginTop="2dp"
+                            android:alpha="0.85"
+                            android:background="@android:color/transparent"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp">
 
-                            <TextView
-                                android:id="@+id/headTwo"
+                            <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:text="@string/good_level"
-                                android:textColor="@android:color/holo_orange_light"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:background="@android:color/transparent">
 
-                            <TextView
-                                android:id="@+id/descTwo"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/headTwo"
-                                android:layout_marginStart="32dp"
-                                android:text="@string/good_level_value"
-                                android:textColor="@color/colorPrimary" />
+                                <TextView
+                                    android:id="@+id/headTwo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="@string/good_level"
+                                    android:textColor="@android:color/holo_orange_light"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                                <TextView
+                                    android:id="@+id/descTwo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/headTwo"
+                                    android:layout_marginStart="32dp"
+                                    android:text="@string/good_level_value"
+                                    android:textColor="@color/colorPrimary" />
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardLabel3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/cardLabel2"
-                        android:layout_marginTop="2dp"
-                        android:alpha="0.85"
-                        android:background="@android:color/transparent"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardLabel3"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent">
+                            android:layout_below="@+id/cardLabel2"
+                            android:layout_marginTop="2dp"
+                            android:alpha="0.85"
+                            android:background="@android:color/transparent"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp">
 
-                            <TextView
-                                android:id="@+id/headThree"
+                            <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:text="@string/low_level"
-                                android:textColor="@android:color/holo_green_light"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:background="@android:color/transparent">
 
-                            <TextView
-                                android:id="@+id/descThree"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/headThree"
-                                android:layout_marginStart="32dp"
-                                android:text="@string/low_level_value"
-                                android:textColor="@color/colorPrimary" />
+                                <TextView
+                                    android:id="@+id/headThree"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:text="@string/low_level"
+                                    android:textColor="@android:color/holo_green_light"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                                <TextView
+                                    android:id="@+id/descThree"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/headThree"
+                                    android:layout_marginStart="32dp"
+                                    android:text="@string/low_level_value"
+                                    android:textColor="@color/colorPrimary" />
+
+                            </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
                 </RelativeLayout>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/userState"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
-            android:alpha="0.85"
-            android:background="@color/colorPrimary"
-            android:text="@string/username"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/userState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:alpha="0.85"
+                android:background="@color/colorPrimary"
+                android:text="@string/username"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    </RelativeLayout>
-</ScrollView>
+        </RelativeLayout>
+
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

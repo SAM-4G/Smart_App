@@ -4,17 +4,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.DialogCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sam.kadarairkopi.preference.SharedData;
 import com.sam.kadarairkopi.R;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Button resultButton;
     ImageView closePopUp, resultIcon;
     Dialog resultDialog, indicatorDialog;
+    SwipeRefreshLayout refreshLayout;
 
     @Override
     protected void onStart() {
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         cardLabel3 = findViewById(R.id.cardLabel3);
 
         resultButton = findViewById(R.id.buttonRefresh);
+        refreshLayout = findViewById(R.id.swipeLayout);
 
         circleImageView.getBackground().setAlpha(225);
         circleImageView2.getBackground().setAlpha(225);
@@ -112,6 +117,17 @@ public class MainActivity extends AppCompatActivity {
                 showResult();
             }
         });
+
+        refreshLayout.setColorSchemeColors(getResources().getColor(R.color.indigo_500));
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshLayout.setRefreshing(false);
+                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     public void setUser() {
