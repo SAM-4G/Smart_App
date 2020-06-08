@@ -19,8 +19,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.sam.kadarairkopi.data.DataCore;
 import com.sam.kadarairkopi.preference.SharedData;
 import com.sam.kadarairkopi.R;
+import com.sam.kadarairkopi.preference.VolleySing;
+import com.sam.kadarairkopi.utilityAttribute.UrlClass;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -33,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView closePopUp, resultIcon;
     Dialog resultDialog, indicatorDialog;
     SwipeRefreshLayout refreshLayout;
+    JSONObject objectKopi;
 
     @Override
     protected void onStart() {
@@ -119,15 +135,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         refreshLayout.setColorSchemeColors(getResources().getColor(R.color.indigo_500));
-
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshLayout.setRefreshing(false);
                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+//                getDataKopi();
             }
         });
-
     }
 
     public void setUser() {
@@ -182,6 +197,41 @@ public class MainActivity extends AppCompatActivity {
         indicatorDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         indicatorDialog.show();
 
+    }
+
+    private void getDataKopi() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, UrlClass.Url_DataKopi,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            JSONArray array = obj.getJSONArray("data");
+
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject jsonObject = array.getJSONObject(i);
+                                DataCore dataKopi = new DataCore(jsonObject);
+
+                                final String beratKopi = dataKopi.getWeight();
+                                final String kadarAir = dataKopi.getWaterLevel();
+
+                                weight.setText(beratKopi);
+                                waterLevel.setText(kadarAir);
+                            }
+                        } catch (
+                                JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Connection Error" + error, Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+                    }
+                });
+        VolleySing.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
     }
 
 }

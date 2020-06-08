@@ -24,7 +24,7 @@ public class VolleySing {
         return mInstance;
     }
 
-    private  RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(mCtx.getApplicationContext());
         }
