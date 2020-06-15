@@ -28,6 +28,7 @@ import com.sam.kadarairkopi.data.DataCore;
 import com.sam.kadarairkopi.preference.SharedData;
 import com.sam.kadarairkopi.R;
 import com.sam.kadarairkopi.preference.VolleySing;
+import com.sam.kadarairkopi.utilityAttribute.ClickUtility;
 import com.sam.kadarairkopi.utilityAttribute.UrlClass;
 
 import org.json.JSONArray;
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 refreshLayout.setRefreshing(false);
+                ClickUtility.clickSession(refreshLayout);
                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
 //                getDataKopi();
             }

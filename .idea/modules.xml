@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Kadar Air Kopi.iml" filepath="$PROJECT_DIR$/Kadar Air Kopi.iml" group="Kadar Air Kopi" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Kadar_Air_Kopi.iml" filepath="$PROJECT_DIR$/.idea/modules/Kadar_Air_Kopi.iml" group="Kadar_Air_Kopi" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Kadar Air Kopi/app" />
     </modules>
   </component>
