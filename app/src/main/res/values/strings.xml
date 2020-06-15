@@ -34,6 +34,8 @@
     <string name="weight">WEIGHT (KG)</string>
     <string name="water_level">WATER LEVEL (%)</string>
     <string name="water_level_value">12</string>
+    <string name="water_level_value2">8</string>
+    <string name="water_level_value3">20</string>
     <string name="weight_value">2</string>
     <!--      Pop-Up-Dialog-->
     <string name="closepopup">closePopUp</string>
@@ -50,5 +52,6 @@
     <string name="high_level_detail">Kopi dengan kadar air di atas 12%. Kopi kurang bagus, karena dengan kadar air di atas 12% bertekstur lebih lunak sehingga membuat aroma kopi rusak dan cepat membusuk.</string>
     <string name="good_level_detail">Kopi dengan kadar air 12%. Kopi kualitas baik, tekstur dan aroma maksimal.</string>
     <string name="low_level_detail">Kopi dengan kadar air di bawah 12%. Kopi tidak bagus, dengan kadar air di bawah 12% menjadikan kopi terlalu kering dan akan memicu retakan pada bagian terluar biji kopi bahkan dapat menghilangkan aroma kopi.</string>
+    <string name="forgot_password">Forgot Password?</string>
 
 </resources>

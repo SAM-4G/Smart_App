@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView closePopUp, resultIcon;
     Dialog resultDialog, indicatorDialog;
     SwipeRefreshLayout refreshLayout;
-    JSONObject objectKopi;
 
     @Override
     protected void onStart() {
@@ -118,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         userName.getBackground().setAlpha(225);
 
         setUser();
+//        configWater();
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +145,13 @@ public class MainActivity extends AppCompatActivity {
 //                getDataKopi();
             }
         });
+    }
+
+    private void configWater() {
+        String resultValue;
+        resultValue = "12";
+        if (waterLevel.equals(resultValue)) {
+        }
     }
 
     public void setUser() {

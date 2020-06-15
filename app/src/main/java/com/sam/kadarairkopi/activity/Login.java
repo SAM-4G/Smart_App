@@ -4,8 +4,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -40,13 +44,13 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    Button loginUser;
-    Button registerUser;
-    EditText emailInput;
-    EditText passInput;
+    Button loginUser, registerUser, forgotPassButton;
+    EditText emailInput, passInput, forgotOldPass, forgotNewPass;
     CardView cardView, overlayCard;
-    ImageView logoLogin;
+    ImageView logoLogin, closePopUp;
     RelativeLayout button1, button2;
+    TextView forgotPassword;
+    Dialog forgotDialog;
 
     @Override
     protected void onStart() {
@@ -96,6 +100,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         logoLogin = findViewById(R.id.logoLogin);
+        forgotPassword = findViewById(R.id.forgotPass);
 
         cardView.getBackground().setAlpha(225);
         overlayCard.getBackground().setAlpha(225);
@@ -105,6 +110,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         registerUser.setOnClickListener(this);
         loginUser.setOnClickListener(this);
+        forgotPassword.setOnClickListener(this);
     }
 
     @Override
@@ -187,6 +193,42 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             case R.id.registerButton:
                 goToRegister();
+                break;
+
+            case R.id.forgotPass:
+                forgotDialog = new Dialog(Login.this);
+                forgotDialog.setContentView(R.layout.forgot_pass_action);
+
+                closePopUp = forgotDialog.findViewById(R.id.closeTop);
+                forgotPassButton = forgotDialog.findViewById(R.id.forgotButton);
+                forgotOldPass = forgotDialog.findViewById(R.id.oldPassInput1);
+                forgotNewPass = forgotDialog.findViewById(R.id.newPassInput1);
+
+                closePopUp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        forgotDialog.dismiss();
+                    }
+                });
+                forgotPassButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (TextUtils.isEmpty(forgotOldPass.getText())) {
+                            forgotOldPass.setError("Password harus diisi");
+                            forgotOldPass.requestFocus();
+                        } else if (TextUtils.isEmpty(forgotNewPass.getText())) {
+                            forgotNewPass.setError("Password harus diisi");
+                            forgotNewPass.requestFocus();
+                        } else {
+                            forgotDialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                forgotDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                forgotDialog.show();
+                break;
         }
     }
 
