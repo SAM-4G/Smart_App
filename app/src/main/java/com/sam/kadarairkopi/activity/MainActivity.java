@@ -3,7 +3,6 @@ package com.sam.kadarairkopi.activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.DialogCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
@@ -11,7 +10,6 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -19,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -34,9 +31,6 @@ import com.sam.kadarairkopi.utilityAttribute.UrlClass;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -141,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
             public void onRefresh() {
                 refreshLayout.setRefreshing(false);
                 ClickUtility.clickSession(refreshLayout);
+                getDataKopi();
                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
-//                getDataKopi();
             }
         });
     }
@@ -171,11 +165,17 @@ public class MainActivity extends AppCompatActivity {
         weightVal = resultDialog.findViewById(R.id.weightValue);
         waterVal = resultDialog.findViewById(R.id.waterValue);
 
+        String wLevel = waterLevel.getText().toString();
+        String wEight = weight.getText().toString();
+
+        weightVal.setText(wEight);
+        waterVal.setText(wLevel);
+
         if (waterVal.getText().equals(resultValue)) {
             resultIcon.setImageResource(R.drawable.ic_check_circle_black_24dp);
             note.setText(R.string.good_quality_coffee_beans);
         }
-        if (!waterVal.getText().equals(resultValue)) {
+        if (waterVal.getText().equals(wLevel)) {
             resultIcon.setImageResource(R.drawable.ic_error_outline_black_24dp);
             note.setText(R.string.bad_quality_coffee_beans);
         }
@@ -221,8 +221,8 @@ public class MainActivity extends AppCompatActivity {
                                 JSONObject jsonObject = array.getJSONObject(i);
                                 DataCore dataKopi = new DataCore(jsonObject);
 
-                                final String beratKopi = dataKopi.getWeight();
-                                final String kadarAir = dataKopi.getWaterLevel();
+                                String beratKopi = dataKopi.getWeight();
+                                String kadarAir = dataKopi.getWaterLevel();
 
                                 weight.setText(beratKopi);
                                 waterLevel.setText(kadarAir);
@@ -242,5 +242,4 @@ public class MainActivity extends AppCompatActivity {
                 });
         VolleySing.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
     }
-
 }

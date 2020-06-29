@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,7 +17,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,8 +44,8 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    Button loginUser, registerUser, forgotPassButton;
-    EditText emailInput, passInput, forgotOldPass, forgotNewPass;
+    Button loginUser, registerUser, confirmForgotButton;
+    EditText emailInput, passInput, forgotRegisteredEmail, forgotCurrentPass;
     CardView cardView, overlayCard;
     ImageView logoLogin, closePopUp;
     RelativeLayout button1, button2;
@@ -147,19 +147,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                             final String emailUser = user1.getUserEmail();
                                             final String passUser = user1.getUserPassword();
 
-                                            final boolean userAndPassTrue = (emailUser.equals(email) && passUser.equals(password));
+                                            final boolean userAndPassTrue = (emailUser.equals(email) && passUser.equals(passEncrypt));
                                             final boolean emailTrue = (emailUser.equals(email));
-                                            final boolean passTrue = (passUser.equals(password));
+                                            final boolean passTrue = (passUser.equals(passEncrypt));
 
                                             if (userAndPassTrue) {
-                                                Toast.makeText(Login.this, "Selamat Datang " + email + "\n" + passEncrypt, Toast.LENGTH_LONG).show();
+                                                Toast.makeText(Login.this, "Selamat Datang", Toast.LENGTH_LONG).show();
                                                 SharedData.getInstance(getApplicationContext()).storeUserEmail(email);
                                                 SharedData.getInstance(getApplicationContext()).storeUserPassword(password);
                                                 SharedData.getInstance(getApplicationContext()).saveLoggedIn(SharedData.USER_LOGIN_STATUS, true);
 
                                                 goToMainActivity();
-                                            }
-                                            if (passTrue) {
+                                            } else if (passTrue) {
                                                 Toast.makeText(Login.this, "Email salah", Toast.LENGTH_LONG).show();
                                             } else if (emailTrue) {
                                                 Toast.makeText(Login.this, "Password salah", Toast.LENGTH_LONG).show();
@@ -200,9 +199,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 forgotDialog.setContentView(R.layout.forgot_pass_action);
 
                 closePopUp = forgotDialog.findViewById(R.id.closeTop);
-                forgotPassButton = forgotDialog.findViewById(R.id.forgotButton);
-                forgotOldPass = forgotDialog.findViewById(R.id.oldPassInput1);
-                forgotNewPass = forgotDialog.findViewById(R.id.newPassInput1);
+                confirmForgotButton = forgotDialog.findViewById(R.id.confirmForgotPassButton);
+                forgotRegisteredEmail = forgotDialog.findViewById(R.id.registeredEmail1);
+                forgotCurrentPass = forgotDialog.findViewById(R.id.currentPass1);
 
                 closePopUp.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -210,24 +209,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         forgotDialog.dismiss();
                     }
                 });
-                forgotPassButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (TextUtils.isEmpty(forgotOldPass.getText())) {
-                            forgotOldPass.setError("Password harus diisi");
-                            forgotOldPass.requestFocus();
-                        } else if (TextUtils.isEmpty(forgotNewPass.getText())) {
-                            forgotNewPass.setError("Password harus diisi");
-                            forgotNewPass.requestFocus();
-                        } else {
-                            forgotDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
+//                confirmForgotButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        if (TextUtils.isEmpty(forgotRegisteredEmail.getText())) {
+//                            forgotRegisteredEmail.setError("Password harus diisi");
+//                            forgotRegisteredEmail.requestFocus();
+//                        } else if (TextUtils.isEmpty(forgotCurrentPass.getText())) {
+//                            forgotCurrentPass.setError("Password harus diisi");
+//                            forgotCurrentPass.requestFocus();
+//                        } else {
+//                            sendRecoveryEmail();
+//                            forgotDialog.dismiss();
+//                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                });
                 forgotDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 forgotDialog.show();
+
                 break;
         }
     }
@@ -245,4 +245,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         passInput.getText().clear();
     }
 
+    protected void sendRecoveryEmail() {
+        Log.i("Send email", "");
+
+        String[] TO = {"sampoerna.sd@gmail.com"};
+        String[] CC = {"sampoerna.sd@gmail.com"};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "RECOVER_PASSWORD");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "You need to create new password");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            Log.i("Finished sending email", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(Login.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

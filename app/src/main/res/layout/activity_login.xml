@@ -81,8 +81,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingStart="4dp"
                                 android:paddingTop="16dp"
-                                android:paddingEnd="4dp"
-                                android:paddingBottom="16dp">
+                                android:paddingEnd="4dp">
 
                                 <com.google.android.material.textfield.TextInputLayout
                                     android:id="@+id/emailInput"
@@ -146,7 +145,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/relativeBotIn2"
                     android:layout_centerHorizontal="true"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="52dp">
 
                     <RelativeLayout
                         android:id="@+id/button1"
@@ -191,16 +191,6 @@
                             android:textSize="16sp" />
                     </RelativeLayout>
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/forgotPass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/linearButton"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/forgot_password"
-                    android:textColor="@color/colorAccentDark"
-                    android:textStyle="bold" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -213,5 +203,18 @@
             android:background="@drawable/background_profile"
             android:contentDescription="@string/user_icon"
             android:src="@drawable/ic_person_black_24dp" />
+
+        <TextView
+            android:id="@+id/forgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:padding="4dp"
+            android:text="@string/forgot_password"
+            android:textColor="@color/colorAccentDark"
+            android:background="@color/colorAccent"
+            android:textStyle="bold" />
     </RelativeLayout>
 </ScrollView>

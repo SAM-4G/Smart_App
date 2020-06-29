@@ -48,13 +48,13 @@ public class DataUser {
         try {
             String idUser = object.getString("id");
             String emailUser = object.getString("user");
-            String passwordUser = object.getString("pass");
-//            String phoneUser = object.getString("phone");
+            String passwordUser = object.getString("password");
+            String phoneUser = object.getString("hp");
 
             this.userId = idUser;
             this.userEmail = emailUser;
             this.userPassword = passwordUser;
-//            this.userPhone = phoneUser;
+            this.userPhone = phoneUser;
 
         } catch (JSONException e) {
             e.printStackTrace();

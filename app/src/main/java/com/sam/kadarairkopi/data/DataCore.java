@@ -33,11 +33,13 @@ public class DataCore {
 
     public DataCore(JSONObject object) {
         try {
-            String beratKopi = object.getString("berat");
-            String kadarAir = object.getString("air");
+            String id = object.getString("id");
+            String kadarAir = object.getString("Kadar Air");
+            String beratKopi = object.getString("Berat");
 
-            this.weight = beratKopi;
+            this.id = id;
             this.waterLevel = kadarAir;
+            this.weight = beratKopi;
 
         } catch (Exception e) {
             e.printStackTrace();

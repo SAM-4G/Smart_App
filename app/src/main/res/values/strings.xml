@@ -33,10 +33,8 @@
     <string name="result">RESULT</string>
     <string name="weight">WEIGHT (KG)</string>
     <string name="water_level">WATER LEVEL (%)</string>
-    <string name="water_level_value">12</string>
-    <string name="water_level_value2">8</string>
-    <string name="water_level_value3">20</string>
-    <string name="weight_value">2</string>
+    <string name="water_level_value">0</string>
+    <string name="weight_value">0</string>
     <!--      Pop-Up-Dialog-->
     <string name="closepopup">closePopUp</string>
     <string name="your_coffee_is">Your Coffee is</string>

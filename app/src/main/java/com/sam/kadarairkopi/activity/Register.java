@@ -3,7 +3,7 @@ package com.sam.kadarairkopi.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -85,44 +85,47 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 userPassword.setError("Password tidak sama");
                 userPassword.requestFocus();
             } else {
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, UrlClass.Url_Register,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-                                    JSONObject obj = new JSONObject(response);
-                                    if (obj.getBoolean("error")) {
-                                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                                    } else {
-
-                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getApplicationContext(), "Connection Error" + error, Toast.LENGTH_SHORT).show();
-                                error.printStackTrace();
-                            }
-                        }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("email", email);
-                        params.put("password", password);
-                        params.put("encrypt", passwordEncrypt);
-                        params.put("phone", phone);
-
-                        return params;
-                    }
-                };
-                VolleySing.getInstance(Register.this).addToRequestQueue(stringRequest);
+                registerUser(email, passwordEncrypt, phone, Register.this);
+                Toast.makeText(Register.this, "Register success", Toast.LENGTH_LONG).show();
+                Register.this.finish();
             }
         }
     }
 
+    private void registerUser(final String emails, final String passwordEncrpts, final String phones, final Context context) {
+        String urlRegister = UrlClass.Url_Register + "hp=" + phones + "&pass=" + passwordEncrpts + "&user=" + emails + UrlClass.API_KEY;
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlRegister,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            String kode = obj.getString("Statuse_code");
+                            String pesan = obj.getString("status_message");
+                            Log.d("TAG", "onResponse: " + pesan);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Register.this, "Connection Error" + error, Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", emails);
+                params.put("password", passwordEncrpts);
+                params.put("phone", phones);
+
+                return params;
+            }
+        };
+        VolleySing.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+    }
 }

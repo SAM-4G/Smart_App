@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="320dp"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="16dp"
@@ -23,68 +23,87 @@
             android:contentDescription="@string/closepopup"
             android:src="@drawable/ic_close_black_24dp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/oldPassInput"
-            style="@style/TextInputLayoutApperance"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRecoverPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/closeTop"
-            android:layout_marginStart="32dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:hint="Password Lama"
-            app:boxBackgroundMode="outline"
-            app:counterEnabled="true"
-            app:counterMaxLength="50"
-            app:endIconMode="password_toggle"
-            app:helperText="Enter your password"
-            app:startIconDrawable="@drawable/password_icon">
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/oldPassInput1"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColor="@color/colorPrimary" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="match_parent"
+                android:paddingBottom="8dp"
+                android:background="@color/colorPrimaryDark">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/newPassInput"
-            style="@style/TextInputLayoutApperance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/oldPassInput"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:hint="Password Baru"
-            app:boxBackgroundMode="outline"
-            app:counterEnabled="true"
-            app:counterMaxLength="50"
-            app:endIconMode="password_toggle"
-            app:helperText="Enter your password"
-            app:startIconDrawable="@drawable/password_icon">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/registeredEmail"
+                    style="@style/TextInputLayoutApperance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Registered Email"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:endIconMode="clear_text"
+                    app:helperText="Enter your registered Email"
+                    app:startIconDrawable="@drawable/email_icon">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/newPassInput1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColor="@color/colorPrimary" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/registeredEmail1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorPrimary" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/currentPass"
+                    style="@style/TextInputLayoutApperance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/registeredEmail"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:hint="Current Password"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="30"
+                    app:endIconMode="password_toggle"
+                    app:helperText="Enter your current password"
+                    app:startIconDrawable="@drawable/password_icon">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/currentPass1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorPrimary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/forgotButton"
+            android:id="@+id/confirmForgotPassButton"
             style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/newPassInput"
+            android:layout_below="@+id/cardRecoverPass"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="OK"
+            android:text="CONFIRM"
             android:textColor="@color/colorAccentDark"
             android:textSize="14sp" />
     </RelativeLayout>
