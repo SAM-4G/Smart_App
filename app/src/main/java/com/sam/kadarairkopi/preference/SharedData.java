@@ -1,5 +1,6 @@
 package com.sam.kadarairkopi.preference;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,7 +18,9 @@ public class SharedData {
     private static final String WATER_LEVEL_VALUE = "waterLevel";
     public static final String WEIGHT_VALUE = "weight";
 
+    @SuppressLint("StaticFieldLeak")
     private static SharedData mInstance;
+    @SuppressLint("StaticFieldLeak")
     private static Context mCtx;
 
     private SharedData(Context context) {
@@ -68,7 +71,7 @@ public class SharedData {
         mCtx.startActivity(new Intent(mCtx, Login.class));
     }
 
-    //    Data Preferences
+//    Data Preferences
     public void storeWaterLevel(String wLevel) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

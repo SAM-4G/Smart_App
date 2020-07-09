@@ -3,7 +3,6 @@ package com.sam.kadarairkopi.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -85,14 +83,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 userPassword.setError("Password tidak sama");
                 userPassword.requestFocus();
             } else {
-                registerUser(email, passwordEncrypt, phone, Register.this);
+                registerUser(email, passwordEncrypt, phone);
                 Toast.makeText(Register.this, "Register success", Toast.LENGTH_LONG).show();
                 Register.this.finish();
             }
         }
     }
 
-    private void registerUser(final String emails, final String passwordEncrpts, final String phones, final Context context) {
+    private void registerUser(final String emails, final String passwordEncrpts, final String phones) {
         String urlRegister = UrlClass.Url_Register + "hp=" + phones + "&pass=" + passwordEncrpts + "&user=" + emails + UrlClass.API_KEY;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlRegister,
                 new Response.Listener<String>() {
@@ -100,7 +98,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     public void onResponse(String response) {
                         try {
                             JSONObject obj = new JSONObject(response);
-                            String kode = obj.getString("Statuse_code");
                             String pesan = obj.getString("status_message");
                             Log.d("TAG", "onResponse: " + pesan);
 
@@ -117,7 +114,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     }
                 }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("email", emails);
                 params.put("password", passwordEncrpts);

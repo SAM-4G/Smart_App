@@ -51,5 +51,8 @@
     <string name="good_level_detail">Kopi dengan kadar air 12%. Kopi kualitas baik, tekstur dan aroma maksimal.</string>
     <string name="low_level_detail">Kopi dengan kadar air di bawah 12%. Kopi tidak bagus, dengan kadar air di bawah 12% menjadikan kopi terlalu kering dan akan memicu retakan pada bagian terluar biji kopi bahkan dapat menghilangkan aroma kopi.</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="show_log">SHOW LOG</string>
+    <string name="log">LOG</string>
+    <string name="delete">DELETE</string>
 
 </resources>

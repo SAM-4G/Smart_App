@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,7 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -41,6 +41,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -72,8 +73,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 Login.this.finish();
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
             }
         });
         ab.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -179,7 +178,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             }) {
 
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             Map<String, String> params = new HashMap<>();
                             params.put("email", email);
                             params.put("password", passEncrypt);
@@ -225,7 +224,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 //                        }
 //                    }
 //                });
-                forgotDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                Objects.requireNonNull(forgotDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 forgotDialog.show();
 
                 break;
@@ -245,6 +244,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         passInput.getText().clear();
     }
 
+    @SuppressLint("IntentReset")
     protected void sendRecoveryEmail() {
         Log.i("Send email", "");
 

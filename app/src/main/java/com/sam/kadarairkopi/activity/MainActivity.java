@@ -12,8 +12,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.sam.kadarairkopi.data.DBSource;
+import com.sam.kadarairkopi.SQLite.LogData;
 import com.sam.kadarairkopi.data.DataCore;
 import com.sam.kadarairkopi.preference.SharedData;
 import com.sam.kadarairkopi.R;
@@ -32,6 +36,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,10 +46,11 @@ public class MainActivity extends AppCompatActivity {
     CircleImageView circleImageView, circleImageView2;
     TextView waterLevel, waterLevel2, weight, weight2, userName, note, weightVal, waterVal;
     CardView cardView, cardLabel1, cardLabel2, cardLabel3;
-    Button resultButton;
+    Button resultButton, logButton, delButton;
     ImageView closePopUp, resultIcon;
-    Dialog resultDialog, indicatorDialog;
+    Dialog resultDialog, indicatorDialog, logDialog;
     SwipeRefreshLayout refreshLayout;
+    private DBSource dbSource;
 
     @Override
     protected void onStart() {
@@ -56,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder ab = new AlertDialog.Builder(MainActivity.this);
-        ab.setTitle("Logout or Exit").setIcon(R.drawable.user_icon);
+        ab.setTitle("Logout or exit").setIcon(R.drawable.user_icon);
         ab.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -70,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 MainActivity.this.finish();
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
             }
         });
         ab.show();
@@ -99,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         resultButton = findViewById(R.id.buttonRefresh);
         refreshLayout = findViewById(R.id.swipeLayout);
+        logButton = findViewById(R.id.buttonLog);
 
         circleImageView.getBackground().setAlpha(225);
         circleImageView2.getBackground().setAlpha(225);
@@ -110,8 +117,9 @@ public class MainActivity extends AppCompatActivity {
         cardLabel3.getBackground().setAlpha(225);
         userName.getBackground().setAlpha(225);
 
+        dbSource = new DBSource(this);
+
         setUser();
-//        configWater();
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,17 +143,18 @@ public class MainActivity extends AppCompatActivity {
             public void onRefresh() {
                 refreshLayout.setRefreshing(false);
                 ClickUtility.clickSession(refreshLayout);
+                dbSource.open();
                 getDataKopi();
                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    private void configWater() {
-        String resultValue;
-        resultValue = "12";
-        if (waterLevel.equals(resultValue)) {
-        }
+        logButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logDialog = new Dialog(MainActivity.this);
+                showLog();
+            }
+        });
     }
 
     public void setUser() {
@@ -187,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        resultDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(resultDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         resultDialog.show();
 
     }
@@ -203,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        indicatorDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(indicatorDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         indicatorDialog.show();
 
     }
@@ -224,6 +233,12 @@ public class MainActivity extends AppCompatActivity {
                                 String beratKopi = dataKopi.getWeight();
                                 String kadarAir = dataKopi.getWaterLevel();
 
+                                LogData logData;
+                                logData = dbSource.createLog(beratKopi, kadarAir);
+
+                                Toast.makeText(getApplicationContext(), "Berat Kopi : " + logData.getBeratKopi()
+                                        + "\nKadar Air : " + logData.getKadarAirKopi(), Toast.LENGTH_LONG).show();
+
                                 weight.setText(beratKopi);
                                 waterLevel.setText(kadarAir);
                             }
@@ -241,5 +256,30 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         VolleySing.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
+    }
+
+    private void showLog() {
+        logDialog.setContentView(R.layout.log_data_kopi);
+        ListView lisLog = logDialog.findViewById(R.id.listLog);
+        delButton = logDialog.findViewById(R.id.deleteLog);
+
+        dbSource = new DBSource(this);
+        dbSource.open();
+
+        ArrayList<LogData> arrayList = dbSource.getAllLog();
+        ArrayAdapter<LogData> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
+        lisLog.setAdapter(adapter);
+
+        delButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbSource.deleteLog();
+                Toast.makeText(MainActivity.this, "Log was deleted", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Objects.requireNonNull(logDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        logDialog.show();
+
     }
 }

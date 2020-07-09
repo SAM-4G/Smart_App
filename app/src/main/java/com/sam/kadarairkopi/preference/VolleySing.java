@@ -1,15 +1,19 @@
 package com.sam.kadarairkopi.preference;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+@SuppressWarnings("rawtypes")
 public class VolleySing {
 
+    @SuppressLint("StaticFieldLeak")
     private static VolleySing mInstance;
     private RequestQueue mRequestQueue;
+    @SuppressLint("StaticFieldLeak")
     private static Context mCtx;
 
     private VolleySing(Context context) {
