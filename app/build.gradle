@@ -46,4 +46,8 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.android.support:design:29.0.2'
     implementation 'com.ufreedom.uikit:FloatingViewLib:1.0.2'
+
+//    Add maven
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 }

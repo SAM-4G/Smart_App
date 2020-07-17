@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -23,7 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.sam.kadarairkopi.data.DBSource;
+import com.sam.kadarairkopi.SQLite.DBSource;
 import com.sam.kadarairkopi.SQLite.LogData;
 import com.sam.kadarairkopi.data.DataCore;
 import com.sam.kadarairkopi.preference.SharedData;
@@ -32,6 +33,9 @@ import com.sam.kadarairkopi.preference.VolleySing;
 import com.sam.kadarairkopi.utilityAttribute.ClickUtility;
 import com.sam.kadarairkopi.utilityAttribute.UrlClass;
 
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,8 +44,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import mQtt.MqttHelper;
 
 public class MainActivity extends AppCompatActivity {
+
+    MqttHelper mqttHelper;
 
     CircleImageView circleImageView, circleImageView2;
     TextView waterLevel, waterLevel2, weight, weight2, userName, note, weightVal, waterVal;
@@ -50,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView closePopUp, resultIcon;
     Dialog resultDialog, indicatorDialog, logDialog;
     SwipeRefreshLayout refreshLayout;
+
     private DBSource dbSource;
 
     @Override
@@ -144,7 +152,10 @@ public class MainActivity extends AppCompatActivity {
                 refreshLayout.setRefreshing(false);
                 ClickUtility.clickSession(refreshLayout);
                 dbSource.open();
-                getDataKopi();
+
+//                getMqttRequest();
+//                getDataKopi();
+
                 Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
             }
         });
@@ -165,8 +176,7 @@ public class MainActivity extends AppCompatActivity {
     public void showResult() {
         resultDialog.setContentView(R.layout.pop_up_result);
 
-        String resultValue;
-        resultValue = "12";
+        String resultValue = "12";
 
         closePopUp = resultDialog.findViewById(R.id.closeTop);
         resultIcon = resultDialog.findViewById(R.id.resultIcon);
@@ -233,11 +243,10 @@ public class MainActivity extends AppCompatActivity {
                                 String beratKopi = dataKopi.getWeight();
                                 String kadarAir = dataKopi.getWaterLevel();
 
-                                LogData logData;
-                                logData = dbSource.createLog(beratKopi, kadarAir);
+                                LogData logData = dbSource.createLog(beratKopi, kadarAir);
 
-                                Toast.makeText(getApplicationContext(), "Berat Kopi : " + logData.getBeratKopi()
-                                        + "\nKadar Air : " + logData.getKadarAirKopi(), Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getApplicationContext(), "Berat Kopi : " + logData.getBeratKopi()
+//                                        + "\nKadar Air : " + logData.getKadarAirKopi(), Toast.LENGTH_LONG).show();
 
                                 weight.setText(beratKopi);
                                 waterLevel.setText(kadarAir);
@@ -281,5 +290,31 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(logDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         logDialog.show();
 
+    }
+
+    private void getMqttRequest() {
+        mqttHelper = new MqttHelper(getApplicationContext());
+
+        mqttHelper.setCallback(new MqttCallbackExtended() {
+            @Override
+            public void connectComplete(boolean b, String s) {
+                Log.i("Mqtt", "connection success");
+            }
+
+            @Override
+            public void connectionLost(Throwable throwable) {
+                Log.i("Mqtt", "connection lost");
+            }
+
+            @Override
+            public void messageArrived(String topic, MqttMessage mqttMessage) {
+                Log.w("Mqtt", mqttMessage.toString());
+            }
+
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
+                Log.i("Mqtt", "msg delivered");
+            }
+        });
     }
 }

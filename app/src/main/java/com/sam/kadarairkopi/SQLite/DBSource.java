@@ -1,4 +1,4 @@
-package com.sam.kadarairkopi.data;
+package com.sam.kadarairkopi.SQLite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
-import com.sam.kadarairkopi.SQLite.DBHelper;
-import com.sam.kadarairkopi.SQLite.LogData;
 
 import java.util.ArrayList;
 
